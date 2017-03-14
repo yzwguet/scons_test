@@ -1,0 +1,12 @@
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+cwd     = os.path.join(str(Dir('#')), 'SYSTEM')
+src	= Glob('*.c')
+print cwd
+CPPPATH = [cwd, str(Dir('#'))]
+
+group = DefineGroup('T_System', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')

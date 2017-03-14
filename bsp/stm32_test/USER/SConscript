@@ -1,0 +1,17 @@
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+cwd     = os.path.join(str(Dir('#')), '')
+
+# add the general drvers.
+src = Split("""
+test.c
+startup_stm32f10x_hd.s
+""")
+  
+CPPPATH = [cwd]
+
+group = DefineGroup('T_USER', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')

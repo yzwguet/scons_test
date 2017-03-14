@@ -1,0 +1,18 @@
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+
+cwd = GetCurrentDir()
+#cwd     = os.path.join(str(Dir('#')), 'HARDWARE')
+print cwd
+# add the general drvers.
+src = Split("""
+led.c
+""")
+   
+CPPPATH = [cwd]
+
+group = DefineGroup('T_Drivers', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')
